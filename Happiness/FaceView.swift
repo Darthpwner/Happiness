@@ -12,13 +12,14 @@ class FaceView: UIView {
     
     var lineWidth: CGFloat = 3 { didSet {setNeedsDisplay() } }
     var color: UIColor = UIColor.blueColor() { didSet {setNeedsDisplay() } }
+    var scale: CGFloat = 0.90 { didSet {setNeedsDisplay() } }
     
     var faceCenter: CGPoint {
         return convertPoint(center, fromView: superview)
     }
     
     var faceRadius: CGFloat {
-        return min(bounds.size.width, bounds.size.height) / 2   //Radius, not diameter
+        return min(bounds.size.width, bounds.size.height) / 2 * 0.90  //Radius, not diameter
     }
     
     override func drawRect(rect: CGRect)
