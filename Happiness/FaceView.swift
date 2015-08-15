@@ -22,6 +22,23 @@ class FaceView: UIView {
         return min(bounds.size.width, bounds.size.height) / 2 * 0.90  //Radius, not diameter
     }
     
+    private struct Scaling {
+        static let FaceRadiusToEyeRadiusRatio: CGFloat = 10
+        static let FaceRadiusToEyeOffsetRatio: CGFloat = 3
+        static let FaceRadiusToEyeSeparationRatio: CGFloat = 1.5
+        static let FaceRadiusToMouthWidthRatio: CGFloat = 1
+        static let FaceRadiusToMouthHeightRatio: CGFloat = 3
+        static let FaceRadiusToMouthOffsetRatio: CGFloat = 3
+    }
+    
+    private enum Eye { case Left, Right }
+    
+    private func bezierPathForEye(whichEye: Eye) -> UIBezierPath
+    {
+        let eyeRadius = faceRadius / Scaling.FaceRadiusToEyeRadiusRatio
+        //...
+    }
+    
     override func drawRect(rect: CGRect)
     {
         let facePath = UIBezierPath(arcCenter: faceCenter,
