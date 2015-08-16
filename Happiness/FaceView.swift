@@ -10,6 +10,17 @@ import UIKit
 
 class FaceView: UIView {
     
+    let fullSmile = 1.00
+    let mostlySmile = 0.75
+    let halfSmile = 0.5
+    let quarterSmile = 0.25
+
+    let neutralFace = 0.00
+    
+    let fullFrown = -1.00
+    let mostlyFrown = -0.75
+    let halfFrown = -0.5
+    let quarterFrown = -0.25
     
     var lineWidth: CGFloat = 3 { didSet {setNeedsDisplay() } }
     var color: UIColor = UIColor.blueColor() { didSet {setNeedsDisplay() } }
@@ -84,7 +95,7 @@ class FaceView: UIView {
         bezierPathForEye(.Right).stroke()
         
         let smiliness = 0.75
-        //let smilePath bezierPathForSmile(smiliness)
-        //smilePath.stroke()
+        let smilePath = bezierPathForSmile(neutralFace)
+        smilePath.stroke()
     }
 }
