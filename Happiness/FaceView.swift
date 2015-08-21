@@ -8,8 +8,14 @@
 
 import UIKit
 
+//FaceViewDataSource can only be implemented by a class
+protocol FaceViewDataSource: class {
+    func smilinessForFaceView(sender: FaceView) -> Double?
+}
+
+@IBDesignable
 class FaceView: UIView {
-    
+    /*Start of face settings*/
     let fullSmile = 1.00
     let mostlySmile = 0.75
     let halfSmile = 0.5
@@ -21,9 +27,13 @@ class FaceView: UIView {
     let mostlyFrown = -0.75
     let halfFrown = -0.5
     let quarterFrown = -0.25
+    /*End of face settings*/
     
+    @IBInspectable
     var lineWidth: CGFloat = 3 { didSet {setNeedsDisplay() } }
+    @IBInspectable
     var color: UIColor = UIColor.blueColor() { didSet {setNeedsDisplay() } }
+    @IBInspectable
     var scale: CGFloat = 0.90 { didSet {setNeedsDisplay() } }
     
     var faceCenter: CGPoint {
@@ -82,6 +92,9 @@ class FaceView: UIView {
         return path
     }
     
+    //Optional because we can have a flat face without a frown or smile
+    weak var dataSource: FaceViewDataSource?
+    
     override func drawRect(rect: CGRect)
     {
         let facePath = UIBezierPath(arcCenter: faceCenter,
@@ -94,8 +107,9 @@ class FaceView: UIView {
         bezierPathForEye(.Left).stroke()
         bezierPathForEye(.Right).stroke()
         
-        let smiliness = 0.75
-        let smilePath = bezierPathForSmile(neutralFace)
+        //Set smile here
+        let smiliness = dataSource?.smilinessForFaceView(self) ?? 0.0   //If the thing on the left hand side of the question mark is nill, use that. Otherwise, use the thing on the right hand side
+        let smilePath = bezierPathForSmile(smiliness)
         smilePath.stroke()
     }
 }
