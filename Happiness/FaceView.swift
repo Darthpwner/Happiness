@@ -95,6 +95,13 @@ class FaceView: UIView {
     //Optional because we can have a flat face without a frown or smile
     weak var dataSource: FaceViewDataSource?
     
+    func scale(gesture: UIPinchGestureRecognizer) {
+        if gesture.state == .Changed {
+            scale *= gesture.scale  //Incremental scale based on the last movement
+            gesture.scale = 1   //Get the difference between the last time it told me to update
+        }
+    }
+    
     override func drawRect(rect: CGRect)
     {
         let facePath = UIBezierPath(arcCenter: faceCenter,
