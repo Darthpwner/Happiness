@@ -39,7 +39,7 @@ class HappinessViewController: UIViewController, FaceViewDataSource
     {
         didSet {
             happiness = min(max(happiness, 0), 100) //Limit happiness to be between 0 and 100
-            println("Happiness = \(happiness)")
+            print("Happiness = \(happiness)")
             updateUI()
         }
     }

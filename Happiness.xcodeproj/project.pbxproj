@@ -159,6 +159,8 @@
 		6B69F40C1B7EFC370081B140 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0720;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0640;
 				ORGANIZATIONNAME = "Matthew Allen Lin";
 				TargetAttributes = {
@@ -415,6 +417,7 @@
 				6B69F4351B7EFC370081B140 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6B69F4361B7EFC370081B140 /* Build configuration list for PBXNativeTarget "HappinessTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +426,7 @@
 				6B69F4381B7EFC370081B140 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
